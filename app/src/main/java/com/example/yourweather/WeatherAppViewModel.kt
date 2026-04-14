@@ -10,11 +10,14 @@ import kotlinx.coroutines.launch
 class WeatherAppViewModel (private val repository: RetrofitInstance): ViewModel(){
     var weatherData by mutableStateOf<WeatherResponse?>(null)
         private set
+    var currentWeather by mutableStateOf<WeatherResponse?>(null)
+        private set
 
-    fun FetchWeatherData(city: String){
+    fun fetchWeatherData(city: String){
         viewModelScope.launch {
             try {
             weatherData = repository.api.getWeather(city)
+            currentWeather = weatherData
         }catch (e: Exception){
             e.printStackTrace()
            }
