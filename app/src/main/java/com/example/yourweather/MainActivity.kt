@@ -13,8 +13,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             YourWeatherTheme {
                     WeatherApp(WeatherAppViewModel(repository = RetrofitInstance))
+
+
             }
         }
     }
 }
+
+
 
